@@ -1,3 +1,5 @@
+// Implement the Sieve of Eratosthenes to get all prime numbers up to n
+
 var primeSieve = function (n) {
 var all = [];
 var results = [];

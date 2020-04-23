@@ -1,3 +1,6 @@
+// Write a function that takes a number as its argument and 
+//  returns a string that represents that number's simplified fraction.
+
 var toFraction = function(number) {
 var result = number >= 0 ? 'positive' : 'negative';
 number = Math.abs(number);

@@ -1,3 +1,6 @@
+// Given a single input string, write a function that produces all possible anagrams
+//  of a string and outputs them as an array.
+
 var allAnagrams = function(string) {
 	var results = new Set()
 	var anagram = function (current, remaining) {

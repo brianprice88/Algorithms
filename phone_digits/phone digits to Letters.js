@@ -1,3 +1,7 @@
+// Write a function that takes up to four digits of a phone number, and
+//    returns a list of all of the words that can be written on the phone with
+//    that number. (You should return all permutations, not only English words.)
+
 var phoneDigitsToLetters = {
   0: '0',
   1: '1',

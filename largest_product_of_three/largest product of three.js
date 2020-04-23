@@ -1,3 +1,6 @@
+// Write a function that finds the largest possible product of any three numbers
+//   from an array.
+
 var largestProductOfThree = function(array) {
   if (array.length < 3) {return null}
   var largest = -Infinity;

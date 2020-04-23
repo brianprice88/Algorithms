@@ -1,3 +1,8 @@
+// BFSelect accepts a filter function, calls that function on each of the nodes
+//  in Breadth First order, and returns a flat array of node values of the tree
+//  for which the filter returns true.
+
+
 var Tree = function(value) {
   this.value = value;
   this.children = [];
@@ -10,7 +15,6 @@ var Queue = function () {
 
 Queue.prototype.enqueue = function (value) {this.storage.push(value); this.length ++}
 Queue.prototype.dequeue = function () {this.length --; return this.storage.shift()};
-
 
 Tree.prototype.BFSelect = function(filter) {
 var queue = new Queue();

@@ -1,3 +1,7 @@
+// DFSelect accepts a filter function, calls that function on each of the nodes
+// in Depth First order, and returns a flat array of node values of the tree
+// for which the filter returns true.
+
 Tree.prototype.DFSelect = function(filter) {
 	var results = [];
 	var check = function(node, depth) {

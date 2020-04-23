@@ -1,3 +1,5 @@
+// Given a full sudoku board, return 'solved' if the board is solved, or 'invalid' if the board is invalid.
+
 var rowCheck = function(board) {
 for (var i = 0; i < board.length; i++) {
   var row = board[i];

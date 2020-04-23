@@ -1,3 +1,32 @@
+
+//   Design and implement an LRU, or Least Recently Used, cache.
+//  
+//   An LRU cache gives O(1) get(key) and set(key, val) operations,
+//   much like a hashtable, but once it reaches its limit for stored
+//   number of items, removes the least recently used (i.e. the oldest
+//   by get-date) item from the cache in O(1) time.
+//  
+//   For instance:
+//  
+//   var cache = new LRUCache(3); // limit of 3 items
+//   cache.set("item1", 1);
+//   cache.set("item2", 2);
+//   cache.set("item3", 3);
+//   cache.set("item4", 4);
+//  
+//   cache.get("item3") //=> 3
+//   cache.get("item2") //=> 2
+//   // item1 was removed because it was the oldest item by insertion/usage
+//   cache.get("item1") //=> null
+//  
+//   // item4 is removed to make room, because it is the oldest by usage,
+//   // which takes priority.
+//   cache.set("item5", 5);
+//  
+//   // item3 is also removed, because it was retrieved before item2 was
+//   // last retrieved.
+//   cache.set("item6", 6);
+
 var LRUCache = function (limit) {
 this.cache = new List();
 this.obj = {};
@@ -40,10 +69,7 @@ if (this.size > this.limit) {
   delete this.map(oldest.key)
   this.size --
 }
-
 };
-
-
 
 var List = function () {
   this.head = null;

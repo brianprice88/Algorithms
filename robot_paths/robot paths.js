@@ -1,3 +1,8 @@
+// A robot located at the top left corner of a nxn grid is trying to reach the 
+//    bottom right corner. The robot can move either up, down, left, or right, 
+//    but cannot visit the same spot twice. How many possible unique paths are 
+//    there to the bottom right corner? 
+
 var makeBoard = function(n) {
   var board = [];
   for (var i = 0; i < n; i++) {

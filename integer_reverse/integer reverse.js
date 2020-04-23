@@ -1,3 +1,5 @@
+// Given a positive integer, return its digits reversed. 
+
 var reverseInteger = function(number) {
 var totalDigits = Math.floor(Math.log10(number));
 var reversed = 0;
