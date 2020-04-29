@@ -4,7 +4,7 @@ var cubeRoot = function (number) {
         firstTenCubes[i] = [i, i * i * i]
     }
 
-    if (number < 1000) {
+    if (number < 1000) { // cube roots 0-9 will have cubes < 1000
         for (var i = 0; i < firstTenCubes.length; i++) {
             if (firstTenCubes[i][1] > number) {
                 return firstTenCubes[i - 1][0];
@@ -12,34 +12,25 @@ var cubeRoot = function (number) {
         }
         return 9
     }
-
-    let firstPart = number / 1000;
+    // for cube roots 10 - 99:
+    
+    let firstPart = number / 1000; // first take everything but the last three digits
     let firstDigit;
-    for (var i = 0; i < firstTenCubes.length; i++) {
+    for (var i = 0; i < firstTenCubes.length; i++) { // find the greatest number 0 - 9 whose cube root is <= this
         if (firstTenCubes[i][1] > firstPart) {
-            firstDigit = firstTenCubes[i - 1][0];
+            firstDigit = firstTenCubes[i - 1][0]; // that number is first digit in cube root
             break;
         }
     }
-    if (firstDigit === undefined) { firstDigit = 9 }
+    if (firstDigit === undefined) { firstDigit = 9 } // if we didnt hit a number in the loop, it means first digit is 9
 
     let lastDigit;
-    for (var i = 0; i < firstTenCubes.length; i++) {
-        if (firstTenCubes[i][1] % 10 === number % 10) {
-            lastDigit = firstTenCubes[i][0];
+    for (var i = 0; i < firstTenCubes.length; i++) { 
+        if (firstTenCubes[i][1] % 10 === number % 10) { // find number 0-9 whose cube's last digit is the same as number's last digit
+            lastDigit = firstTenCubes[i][0]; // that number is second digit in cube root
             break;
         }
     }
 
     return firstDigit * 10 + lastDigit
 }
-
-/*
-To find the cube root for anything 10-99
-first take everything but the last three digits, and find greatest the number 0 - 9 whose cube root is <= this
-that number is first digit in cube root
-then find number 0-9 whose cube's last digit is the same as input number's last digit
-that number is second digit in cube root
-
-
-*/

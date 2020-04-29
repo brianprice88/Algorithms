@@ -1,3 +1,7 @@
+// Swap every pair of values in array if they are out of order.
+// Keep doing this until you make it through the array without any swaps.
+
+
 var bubbleSort = function(array) {
 var swaps = 0;
 for (var i = 0; i < array.length - 1; i++) {

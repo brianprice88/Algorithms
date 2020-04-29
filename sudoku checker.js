@@ -55,7 +55,7 @@ for (var i = 0; i < midpoints.length; i++) {
 return rowCheck(grids)
 }
 
-function sudokuChecker(board) {
+function sudokuChecker(board) { // if board passes row/column/grid checks, then it is solved
 var splitBoard = board.split('\n');
 if (!rowCheck(splitBoard.slice())) {return false}
 if (!columnCheck(splitBoard.slice())) {return false}

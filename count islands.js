@@ -6,7 +6,7 @@ var countIslands = function(string) {
 var array = string.split('\n');
 var islands = 0;
 
-var coverSquares = function(x, y) { // recursively check up/right/left/down if they exist/are 0's
+var coverSquares = function(x, y) { // recursively check up/right/left/down if they exist/are 0's, and change to '.'
 array[x][y] = '.';
 if (array[x+1] && array[x + 1][y] && (array[x + 1][y] === '0')) {
 	coverSquares(x + 1, y)

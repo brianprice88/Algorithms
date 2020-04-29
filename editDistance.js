@@ -8,14 +8,14 @@ var minDistance = function (word1, word2) {
     for (var i = 0; i <= word1.length; i++) { //initialize top row of matrix from 0-word1length (inclusive since index 0 is empty and word starts at index 1)
         matrix[i] = [i]
     }
-    for (var j = 0; j <= word2.length; j++) { //initialize left column of matrix from 0-word1length (inclusive since index 0 is empty and word starts at index 1)
+    for (var j = 0; j <= word2.length; j++) { //initialize left column of matrix from 0-word2length (inclusive since index 0 is empty and word starts at index 1)
         matrix[0][j] = j
     }
 
 
     for (var i = 1; i <= word1.length; i++) { // fill out rest of matrix starting at [1, 1]
         for (var j = 1; j <= word2.length; j++) {
-            if (word1[i - 1] === word2[j - 1]) { // if word1/word2 were same at prev i/j values (respectively), carry that matrix value to this quare
+            if (word1[i - 1] === word2[j - 1]) { // if word1/word2 were same at prev i/j values (respectively), carry that matrix value to this square
                 matrix[i][j] = matrix[i - 1][j - 1]
             } else { // if word1/word2 weren't same at prev i/j values (respectively), this matrix value is fewest cumulative edits from prev squares left/up/left&up, plus 1 for an additional operation
                 var minPrev = Math.min(matrix[i - 1][j - 1], matrix[i - 1][j], matrix[i][j - 1])

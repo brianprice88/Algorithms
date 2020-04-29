@@ -1,4 +1,4 @@
-// Pre order Traversal
+// Pre order Traversal: visit root then left branch then right branch
 
 var preorderTraversal = function (root, nodes = []) {
     if (root) { nodes.push(root.val) }
@@ -17,7 +17,7 @@ var preorderTraversal = function (root, nodes = []) {
 
 
 
-// In order Traversal
+// In order Traversal: visit left branch then root then right branch
 
 
 var inorderTraversal = function (root, nodes = []) {
@@ -36,7 +36,7 @@ var inorderTraversal = function (root, nodes = []) {
 
 
 
-// Post Order Traversal
+// Post Order Traversal: visit left branch then right branch then root
 
 var postorderTraversal = function (root, nodes = []) {
     if (root && root.left) {

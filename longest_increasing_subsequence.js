@@ -20,7 +20,7 @@ var lengthOfLIS = function (nums) {
 
         if (prevIndex === currentIndex) { // if prevIndex has reached current index then we've tried all values in array before this value to see what greatest LIS would be
             currentIndex++ // move current to next index and prevIndex back to zero
-            prevIndex = 0;
+            prevIndex = 0; // thus we'll again check every value before the new current index to see if it's less than current value, and if so apply that value's LIS + 1
         }
     }
 
