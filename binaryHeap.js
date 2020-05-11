@@ -1,6 +1,10 @@
 // Implement a binary min heap, in which all root nodes are of lesser value than their children.
 // A root node must have two children before the next oldest node can have any children.
 
+// time compleixty for insert and remove is worst-case O(log(n)):
+// best case O(1) since the insertion and removal themselves are constant time operations
+// however we could have to traverse the entire heap in order to correctly place the added/swapped nodes where they belong
+
 var getParentIndex = function(childIndex) {
     return Math.floor((childIndex - 1) / 2)
 }

@@ -1,6 +1,6 @@
 // Swap every pair of values in array if they are out of order.
 // Keep doing this until you make it through the array without any swaps.
-
+// time complexity: O(n^2)
 
 var bubbleSort = function(array) {
 var swaps = 0;

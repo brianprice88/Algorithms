@@ -1,3 +1,5 @@
+// time complexity: O(log(n)), since we are dividing the remaining array in half each iteration through the loop
+
 var binarySearch = function (array, target) {
     if (!array || array.length === 0) { return null }
     var left = 0;
