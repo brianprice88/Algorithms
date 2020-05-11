@@ -1,3 +1,5 @@
+// Implement a Queue using two Stacks
+
 class Stack {
     constructor() {
         this.length = 0;
