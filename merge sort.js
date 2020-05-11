@@ -1,10 +1,13 @@
+// divide the array in half, recursively sort each half, and merge them back together.  
+// time complexity: O(n log(n)), since halving progressively smaller arrays is logarithmic time and sorting is linear time
+
 var mergeSort = function (array) {
     if (array.length === 1) {return array}
     var arr1 = array.slice(0, Math.floor(array.length / 2))
     var arr2 = array.slice(Math.floor(array.length / 2))
     var left = mergeSort(arr1);
     var right = mergeSort(arr2);
-return merge(left, right)
+    return merge(left, right)
 }
 
 var merge = function (arr1, arr2) {
