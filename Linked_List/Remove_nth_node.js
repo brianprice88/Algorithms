@@ -7,14 +7,14 @@ var ListNode = function(val) {
 
 var removeNthNodeFromEnd = function(head, n) {
 
-let dummyHead = new ListNode(0); // create a dummy head so we can reference the list in case we have to remove the current head
+let dummyHead = new ListNode(0); // create a dummy head in case we have to remove the current head
 dummyHead.next = head;
 
-var firstPointer = head;
-var secondPointer = head;
+var firstPointer = dummyHead;
+var secondPointer = dummyHead;
 var secondMoves = 0;
 
-while (secondMoves < n + 1) { // move second pointer n + 1
+while (secondMoves <= n) { // move second pointer n + 1 spaces from dummyHead
     secondPointer = secondPointer.next;
     secondMoves ++;
 }
@@ -31,10 +31,10 @@ return dummyHead.next;
 
 /*
 example linked list: we are asked to remove node n = 2 from end (4 below)
-1 -> 2 -> 3 -> 4 -> 5
+dummy -> 1 -> 2 -> 3 -> 4 -> 5
 
 we can know when a pointer reaches the end of the list (node is null)
 thus we want pointer two to hit that when pointer one hits 3 (the node before the target)
-working backwords we see pointer one starts moving when pointer two is at 4
+working backwords we see pointer one starts moving from dummy when pointer two is at 3
 pointer two thus went three spaces (n + 1) prior to pointer one moving
 */
