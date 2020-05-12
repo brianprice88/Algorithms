@@ -1,5 +1,5 @@
 
-//   Design and implement an LRU, or Least Recently Used, cache.
+//   Design and implement an LRU, or Least Recently Used, cache, using a doubly-linked list.
 //  
 //   An LRU cache gives O(1) get(key) and set(key, val) operations,
 //   much like a hashtable, but once it reaches its limit for stored
@@ -28,47 +28,44 @@
 //   cache.set("item6", 6);
 
 var LRUCache = function (limit) {
-this.cache = new List();
-this.obj = {};
-this.limit = limit;
-this.size = 0;
+  this.cache = new List();
+  this.obj = {};
+  this.limit = limit;
+  this.size = 0;
 };
 
 var LRUCacheItem = function (key, val) {
-this.key = key;
-this.value = value;
-this.node = null;
-};
-
-LRUCache.prototype.size = function () {
-return this.size;
-
+  this.key = key;
+  this.value = val;
+  this.node = null;
 };
 
 LRUCache.prototype.get = function (key) {
-if (this.obj[key] === undefined) {return null}
-var value = this.obj[key];
-this.cache.moveToFront(value.node)
-return value;
+  if (this.obj[key] === undefined) { return null }
+  var value = this.obj[key];
+  this.cache.moveToFront(value.node) // move value to front of the cache since it is most recently used
+  return value;
 };
 
 LRUCache.prototype.set = function (key, val) {
   var item;
-if (this.map[key]) {
-  item = this.map[key]
-  item.value = val
-  this.cache.moveToFront(item.node)
-}
-item = new LRUCacheItem(key, val);
-item.node = this.cache.unshift(item)
-this.cache.unshift(item);
-this.map[key] = item;
-this.size ++;
-if (this.size > this.limit) {
-  var oldest = this.cache.pop();
-  delete this.map(oldest.key)
-  this.size --
-}
+  if (this.obj[key]) { //if key already exists, just make sure it has the updated value and move it to the front
+    item = this.obj[key]
+    item.value = val
+    this.cache.moveToFront(item.node);
+    return;
+  }
+
+  item = new LRUCacheItem(key, val); // otherwise add key/val to the head of the list
+  item.node = this.cache.unshift(item)
+  this.obj[key] = item;
+  this.size++;
+  if (this.size > this.limit) { // if size exceeds limit, remove the oldest item
+    var oldest = this.cache.pop();
+    delete this.obj[oldest.key]
+    this.size--
+  }
+
 };
 
 var List = function () {
@@ -87,7 +84,7 @@ List.prototype.unshift = function (val) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = new ListNode(null, val, null);
-  // Not empty list.
+    // Not empty list.
   } else {
     this.head = new ListNode(null, val, this.head);
     this.head.next.prev = this.head;
@@ -101,7 +98,7 @@ List.prototype.shift = function () {
   // Empty list
   if (this.head === null && this.tail === null) {
     return null;
-  // Not empty list.
+    // Not empty list.
   } else {
     var head = this.head;
     this.head = this.head.next;
@@ -115,7 +112,7 @@ List.prototype.push = function (val) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = new ListNode(null, val, null);
-  // Not empty list.
+    // Not empty list.
   } else {
     this.tail = new ListNode(this.tail, val, null);
     this.tail.prev.next = this.tail;
@@ -129,7 +126,7 @@ List.prototype.pop = function () {
   // Empty list
   if (this.head === null && this.tail === null) {
     return null;
-  // Not empty list.
+    // Not empty list.
   } else {
     var tail = this.tail;
     this.tail = this.tail.prev;
@@ -156,7 +153,7 @@ List.prototype.moveToFront = function (node) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = node;
-  // At least one node.
+    // At least one node.
   } else {
     this.head.prev = node;
     node.next = this.head;
@@ -182,7 +179,7 @@ List.prototype.moveToEnd = function (node) {
   // Empty list
   if (this.head === null && this.tail === null) {
     this.head = this.tail = node;
-  // At least one node.
+    // At least one node.
   } else {
     this.tail.next = node;
     node.prev = this.tail;
