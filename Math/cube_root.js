@@ -1,3 +1,16 @@
+// simple implementation: check each integer cubed until we exceed the target number
+
+var cubeRoot = function (number) {
+let root = 0;
+while (root * root * root <= number) {
+    root ++
+}
+return root - 1
+}
+
+
+// alternate more complex implementation:
+
 var cubeRoot = function (number) {
     var firstTenCubes = [];
     for (var i = 0; i <= 9; i++) {
