@@ -22,4 +22,5 @@ var swapValues = function (x, y) { // swap the values of x and y with each other
     x = x ^ y;
     y = x ^ y;
     x = x ^ y;
+    return [x, y]
 }
