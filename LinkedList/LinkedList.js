@@ -39,4 +39,25 @@ class LinkedList {
         return pointer.value === value // pointer is now at tail, so either tail is value or value doesn't exist
     }
 
+    delete(node) { // give only one node in a list, remove it from the list by swapping its value with the next node's
+        let currValue = node.value;
+        let nextValue = node.next.value;
+        node.value = currValue;
+        node.next.value = nextValue;
+        node.next = node.next.next;
+    }
+
+    reverseList() { // reverse the linked list by shifting each node's next pointer to the previous node
+        if (!this.head) { return null }
+        let prev = null;
+        let current = this.head;
+        while (current !== null) {
+            let next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next
+        }
+        return prev;
+    }
+
 }
