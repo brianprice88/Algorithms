@@ -18,6 +18,13 @@ var bitPositionValue = function (number, bitPosition) {
     return (number >> bitPosition) & 1 // given a bit position, returns whether the value there is 0 or 1
 } // 5 = 101; (5 >> 0) & 1 is 1, (5 >>1) & 1 is 0, (5 >>2) & 1 is 1
 
+var sumNumbers = function (a, b) { // recursively sum numbers without using addition
+    if (b === 0) { return a }
+    else {
+      return sumNumbers(a ^ b, (a & b) << 1)
+    }
+}
+
 var swapValues = function (x, y) { // swap the values of x and y with each other
     x = x ^ y;
     y = x ^ y;

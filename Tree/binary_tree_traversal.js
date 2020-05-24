@@ -12,6 +12,8 @@ var preorderTraversal = function (root, nodes = []) {
 };
 
 // In order Traversal: visit left branch then root then right branch
+/* note that this can be used to determine if a tree is a valid Binary Search Tree
+by checking the array of collected nodes to see whether each value is less than the one after it */
 
 var inorderTraversal = function (root, nodes = []) {
     if (root && root.left) {

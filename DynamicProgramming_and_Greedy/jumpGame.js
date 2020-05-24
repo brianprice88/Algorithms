@@ -31,14 +31,39 @@ var jumpGame = function (array) {
 
 // Greedy solution: instead of using a table above, we just keep a single variable to reference 'true' and see if it gets from the end to zero
 
-var jumpGame = function(array) {
-var end = array.length - 1; // initialize end ('true') as the last value, since we're successful if we've jumped here
+var jumpGame = function (array) {
+    var end = array.length - 1; // initialize end ('true') as the last value, since we're successful if we've jumped here
 
-for (var index = end - 1; index >= 0; index--) { // starting from the space right before the end, we iterate to the beginning of the array
-    if (index + array[index] >= end) { // if we can jump to the end (or beyond) from the current space:
-        end = index; // we move the end variable to current space
+    for (var index = end - 1; index >= 0; index--) { // starting from the space right before the end, we iterate to the beginning of the array
+        if (index + array[index] >= end) { // if we can jump to the end (or beyond) from the current space:
+            end = index; // we move the end variable to current space
+        }
     }
+
+    return end === 0; // if the end variable ends up at index 0, then it means we can jump from index 0 to the end
 }
 
-return end === 0; // if the end variable ends up at index 0, then it means we can jump from index 0 to the end
+/* Variant on the same problem:
+Now assume you can always reach the last index, and determine the minimum number of jumps needed to reach it
+example: given [2,3,1,1,4]
+answer is 2: jump 1 index from 2 to 3, then 3 to reach the end
+*/
+
+var jump = function (nums) {
+
+    var jumps = 0; // number of jumps we've taken
+    var farthest = 0; // farthest index we can jump to, from where we are
+    var end = 0; // the index we last jumped to
+
+    for (var index = 0; index < nums.length; index++) { // iterate through array
+        if (end >= nums.length - 1) { // if we jumped to the end or beyond, exit
+            break;
+        }
+        farthest = Math.max(farthest, index + nums[index]) // farthest we can jump is previous farthest or max distance we can jump from this square 
+        if (index === end) { // if we've reached the spot we last jumped to, we have the farthest we can get from our last position
+            jumps++ // jump to that position
+            end = farthest // thus the new end is farthest
+        }
+    }
+    return jumps;
 }
