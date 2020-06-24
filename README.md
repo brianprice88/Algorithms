@@ -1,4 +1,4 @@
-# Algorithms, Data Structures, and Interview Challenges (oh my!)
+# Algorithms, Data Structures, and Interview Challenges
 
 The purpose of this repo is to practice implementation, and have a central location for review as needed.
 
