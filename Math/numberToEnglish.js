@@ -48,8 +48,8 @@ var numberToWords = function (number) {
     if (numbersToWords[number]) { // numbers 1-19 or multiple of 10 < 100 are just direct lookup
         output = numbersToWords[number];
     } else if (number < 100) { // number < 100 can be broken into tens plance and ones place for direct lookups
-        tensPlace = Math.floor(number / 10);
-        onesPlace = number % 10;
+        let tensPlace = Math.floor(number / 10);
+        let onesPlace = number % 10;
         output = numbersToWords[tensPlace * 10] + ' ' + numbersToWords[onesPlace];
     } else { // number > 100 will require recursion to build out the number string place-by-place
         if (number < 1000) {
